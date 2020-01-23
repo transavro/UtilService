@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package UtilService;
+
+import   "google/api/annotations.proto";
+
+service UtilService{
+
+    //Schedular CRUD
+    rpc DeadLinkChecker(DeadLinkTarget) returns (DeadLinkResp){
+        option (google.api.http) = {
+                post:"/deadChecker"
+                body: "*"
+        };
+    }
+}
+
+message DeadLinkTarget{
+    string source = 1;
+}
+
+message DeadLinkResp{
+    bool isSuccessful = 1;
+}

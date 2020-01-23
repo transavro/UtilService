@@ -1,0 +1,61 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "UtilService.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/deadChecker": {
+      "post": {
+        "summary": "Schedular CRUD",
+        "operationId": "DeadLinkChecker",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UtilServiceDeadLinkResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UtilServiceDeadLinkTarget"
+            }
+          }
+        ],
+        "tags": [
+          "UtilService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "UtilServiceDeadLinkResp": {
+      "type": "object",
+      "properties": {
+        "isSuccessful": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "UtilServiceDeadLinkTarget": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
