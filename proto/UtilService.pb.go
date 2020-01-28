@@ -25,6 +25,92 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type DeepLinkResp struct {
+	DeepLink             string   `protobuf:"bytes,1,opt,name=deepLink,proto3" json:"deepLink,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-" bson:"-"`
+	XXX_unrecognized     []byte   `json:"-" bson:"-"`
+	XXX_sizecache        int32    `json:"-" bson:"-"`
+}
+
+func (m *DeepLinkResp) Reset()         { *m = DeepLinkResp{} }
+func (m *DeepLinkResp) String() string { return proto.CompactTextString(m) }
+func (*DeepLinkResp) ProtoMessage()    {}
+func (*DeepLinkResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1b77ec18d394a137, []int{0}
+}
+
+func (m *DeepLinkResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeepLinkResp.Unmarshal(m, b)
+}
+func (m *DeepLinkResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeepLinkResp.Marshal(b, m, deterministic)
+}
+func (m *DeepLinkResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeepLinkResp.Merge(m, src)
+}
+func (m *DeepLinkResp) XXX_Size() int {
+	return xxx_messageInfo_DeepLinkResp.Size(m)
+}
+func (m *DeepLinkResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeepLinkResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeepLinkResp proto.InternalMessageInfo
+
+func (m *DeepLinkResp) GetDeepLink() string {
+	if m != nil {
+		return m.DeepLink
+	}
+	return ""
+}
+
+type DeepLinkReq struct {
+	Board                string   `protobuf:"bytes,1,opt,name=board,proto3" json:"board,omitempty"`
+	PackageName          string   `protobuf:"bytes,2,opt,name=packageName,proto3" json:"packageName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-" bson:"-"`
+	XXX_unrecognized     []byte   `json:"-" bson:"-"`
+	XXX_sizecache        int32    `json:"-" bson:"-"`
+}
+
+func (m *DeepLinkReq) Reset()         { *m = DeepLinkReq{} }
+func (m *DeepLinkReq) String() string { return proto.CompactTextString(m) }
+func (*DeepLinkReq) ProtoMessage()    {}
+func (*DeepLinkReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1b77ec18d394a137, []int{1}
+}
+
+func (m *DeepLinkReq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeepLinkReq.Unmarshal(m, b)
+}
+func (m *DeepLinkReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeepLinkReq.Marshal(b, m, deterministic)
+}
+func (m *DeepLinkReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeepLinkReq.Merge(m, src)
+}
+func (m *DeepLinkReq) XXX_Size() int {
+	return xxx_messageInfo_DeepLinkReq.Size(m)
+}
+func (m *DeepLinkReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeepLinkReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeepLinkReq proto.InternalMessageInfo
+
+func (m *DeepLinkReq) GetBoard() string {
+	if m != nil {
+		return m.Board
+	}
+	return ""
+}
+
+func (m *DeepLinkReq) GetPackageName() string {
+	if m != nil {
+		return m.PackageName
+	}
+	return ""
+}
+
 type DeadLinkTarget struct {
 	Source               string   `protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-" bson:"-"`
@@ -36,7 +122,7 @@ func (m *DeadLinkTarget) Reset()         { *m = DeadLinkTarget{} }
 func (m *DeadLinkTarget) String() string { return proto.CompactTextString(m) }
 func (*DeadLinkTarget) ProtoMessage()    {}
 func (*DeadLinkTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_1b77ec18d394a137, []int{0}
+	return fileDescriptor_1b77ec18d394a137, []int{2}
 }
 
 func (m *DeadLinkTarget) XXX_Unmarshal(b []byte) error {
@@ -75,7 +161,7 @@ func (m *DeadLinkResp) Reset()         { *m = DeadLinkResp{} }
 func (m *DeadLinkResp) String() string { return proto.CompactTextString(m) }
 func (*DeadLinkResp) ProtoMessage()    {}
 func (*DeadLinkResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_1b77ec18d394a137, []int{1}
+	return fileDescriptor_1b77ec18d394a137, []int{3}
 }
 
 func (m *DeadLinkResp) XXX_Unmarshal(b []byte) error {
@@ -104,6 +190,8 @@ func (m *DeadLinkResp) GetIsSuccessful() bool {
 }
 
 func init() {
+	proto.RegisterType((*DeepLinkResp)(nil), "UtilService.DeepLinkResp")
+	proto.RegisterType((*DeepLinkReq)(nil), "UtilService.DeepLinkReq")
 	proto.RegisterType((*DeadLinkTarget)(nil), "UtilService.DeadLinkTarget")
 	proto.RegisterType((*DeadLinkResp)(nil), "UtilService.DeadLinkResp")
 }
@@ -111,20 +199,25 @@ func init() {
 func init() { proto.RegisterFile("UtilService.proto", fileDescriptor_1b77ec18d394a137) }
 
 var fileDescriptor_1b77ec18d394a137 = []byte{
-	// 200 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x0c, 0x2d, 0xc9, 0xcc,
-	0x09, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x46,
-	0x12, 0x92, 0x92, 0x49, 0xcf, 0xcf, 0x4f, 0xcf, 0x49, 0xd5, 0x4f, 0x2c, 0xc8, 0xd4, 0x4f, 0xcc,
-	0xcb, 0xcb, 0x2f, 0x49, 0x2c, 0xc9, 0xcc, 0xcf, 0x2b, 0x86, 0x28, 0x55, 0xd2, 0xe0, 0xe2, 0x73,
-	0x49, 0x4d, 0x4c, 0xf1, 0xc9, 0xcc, 0xcb, 0x0e, 0x49, 0x2c, 0x4a, 0x4f, 0x2d, 0x11, 0x12, 0xe3,
-	0x62, 0x2b, 0xce, 0x2f, 0x2d, 0x4a, 0x4e, 0x95, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x82, 0xf2,
-	0x94, 0x8c, 0xb8, 0x78, 0x60, 0x2a, 0x83, 0x52, 0x8b, 0x0b, 0x84, 0x94, 0xb8, 0x78, 0x32, 0x8b,
-	0x83, 0x4b, 0x93, 0x93, 0x53, 0x8b, 0x8b, 0xd3, 0x4a, 0x73, 0xc0, 0xaa, 0x39, 0x82, 0x50, 0xc4,
-	0x8c, 0x0a, 0xb9, 0x90, 0x9d, 0x22, 0x94, 0xc4, 0xc5, 0x0f, 0x33, 0xc2, 0x39, 0x23, 0x35, 0x39,
-	0x3b, 0xb5, 0x48, 0x48, 0x5a, 0x0f, 0xd9, 0xf9, 0xa8, 0x4e, 0x91, 0x92, 0xc4, 0x2a, 0x09, 0xb2,
-	0x5d, 0x49, 0xbc, 0xe9, 0xf2, 0x93, 0xc9, 0x4c, 0x82, 0x4a, 0x3c, 0xfa, 0x29, 0xa9, 0x89, 0x29,
-	0x50, 0xd3, 0xac, 0x18, 0xb5, 0x92, 0xd8, 0xc0, 0xfe, 0x32, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff,
-	0x52, 0xaa, 0x6f, 0xe0, 0x17, 0x01, 0x00, 0x00,
+	// 286 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0x3d, 0x4e, 0xfb, 0x40,
+	0x14, 0xc4, 0xe5, 0x48, 0xff, 0x28, 0xff, 0x67, 0x0b, 0x94, 0x15, 0x02, 0x63, 0x28, 0xa2, 0xad,
+	0xa2, 0x14, 0xb1, 0x14, 0x3a, 0x5a, 0x82, 0x68, 0x10, 0x85, 0x03, 0x15, 0xd5, 0xf3, 0xfa, 0x61,
+	0x56, 0x36, 0x5e, 0xb3, 0xbb, 0xe6, 0x00, 0x5c, 0x81, 0x7b, 0xd1, 0x70, 0x05, 0x0e, 0x82, 0xfc,
+	0x91, 0xc4, 0xe1, 0xa3, 0x9c, 0x79, 0xa3, 0x9f, 0xc7, 0xb3, 0x30, 0xbe, 0xb3, 0x32, 0x5f, 0x91,
+	0x7e, 0x91, 0x82, 0xe6, 0xa5, 0x56, 0x56, 0x31, 0xb7, 0x67, 0x05, 0xa7, 0xa9, 0x52, 0x69, 0x4e,
+	0x21, 0x96, 0x32, 0xc4, 0xa2, 0x50, 0x16, 0xad, 0x54, 0x85, 0x69, 0xa3, 0x7c, 0x06, 0xde, 0x92,
+	0xa8, 0xbc, 0x96, 0x45, 0x16, 0x91, 0x29, 0x59, 0x00, 0xa3, 0xa4, 0xd3, 0xbe, 0x33, 0x71, 0xa6,
+	0xff, 0xa3, 0x8d, 0xe6, 0x97, 0xe0, 0x6e, 0xb3, 0xcf, 0xec, 0x00, 0xfe, 0xc5, 0x0a, 0x75, 0xd2,
+	0xe5, 0x5a, 0xc1, 0x26, 0xe0, 0x96, 0x28, 0x32, 0x4c, 0xe9, 0x06, 0x9f, 0xc8, 0x1f, 0x34, 0xb7,
+	0xbe, 0xc5, 0xa7, 0xb0, 0xb7, 0x24, 0x4c, 0x6a, 0xcc, 0x2d, 0xea, 0x94, 0x2c, 0x3b, 0x84, 0xa1,
+	0x51, 0x95, 0x16, 0xd4, 0xa1, 0x3a, 0xc5, 0x17, 0x75, 0xb9, 0x36, 0xd9, 0x94, 0xe3, 0xe0, 0x49,
+	0xb3, 0xaa, 0x84, 0x20, 0x63, 0x1e, 0xaa, 0xbc, 0x49, 0x8f, 0xa2, 0x1d, 0x6f, 0xf1, 0xee, 0x40,
+	0xff, 0xf7, 0x59, 0x0c, 0xfb, 0x6b, 0xc6, 0xc5, 0x23, 0x89, 0x8c, 0x34, 0x3b, 0x99, 0xf7, 0x27,
+	0xdb, 0xed, 0x12, 0x1c, 0xff, 0x7a, 0xac, 0x3f, 0xcf, 0x8f, 0x5e, 0x3f, 0x3e, 0xdf, 0x06, 0x63,
+	0xee, 0x85, 0x09, 0x61, 0xd2, 0xd1, 0xce, 0x9d, 0x19, 0xbb, 0x07, 0xf7, 0x8a, 0xec, 0x7a, 0x1b,
+	0xe6, 0x7f, 0x43, 0x6c, 0x26, 0xfb, 0x01, 0xdf, 0x0e, 0xff, 0x27, 0x3c, 0x1e, 0x36, 0x0f, 0x75,
+	0xf6, 0x15, 0x00, 0x00, 0xff, 0xff, 0x6a, 0x8a, 0x9d, 0x10, 0xe8, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,6 +234,7 @@ const _ = grpc.SupportPackageIsVersion4
 type UtilServiceClient interface {
 	//Schedular CRUD
 	DeadLinkChecker(ctx context.Context, in *DeadLinkTarget, opts ...grpc.CallOption) (*DeadLinkResp, error)
+	GetDeepLink(ctx context.Context, in *DeepLinkReq, opts ...grpc.CallOption) (*DeepLinkResp, error)
 }
 
 type utilServiceClient struct {
@@ -160,10 +254,20 @@ func (c *utilServiceClient) DeadLinkChecker(ctx context.Context, in *DeadLinkTar
 	return out, nil
 }
 
+func (c *utilServiceClient) GetDeepLink(ctx context.Context, in *DeepLinkReq, opts ...grpc.CallOption) (*DeepLinkResp, error) {
+	out := new(DeepLinkResp)
+	err := c.cc.Invoke(ctx, "/UtilService.UtilService/GetDeepLink", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UtilServiceServer is the server API for UtilService service.
 type UtilServiceServer interface {
 	//Schedular CRUD
 	DeadLinkChecker(context.Context, *DeadLinkTarget) (*DeadLinkResp, error)
+	GetDeepLink(context.Context, *DeepLinkReq) (*DeepLinkResp, error)
 }
 
 // UnimplementedUtilServiceServer can be embedded to have forward compatible implementations.
@@ -172,6 +276,9 @@ type UnimplementedUtilServiceServer struct {
 
 func (*UnimplementedUtilServiceServer) DeadLinkChecker(ctx context.Context, req *DeadLinkTarget) (*DeadLinkResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeadLinkChecker not implemented")
+}
+func (*UnimplementedUtilServiceServer) GetDeepLink(ctx context.Context, req *DeepLinkReq) (*DeepLinkResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDeepLink not implemented")
 }
 
 func RegisterUtilServiceServer(s *grpc.Server, srv UtilServiceServer) {
@@ -196,6 +303,24 @@ func _UtilService_DeadLinkChecker_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UtilService_GetDeepLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeepLinkReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UtilServiceServer).GetDeepLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UtilService.UtilService/GetDeepLink",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UtilServiceServer).GetDeepLink(ctx, req.(*DeepLinkReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UtilService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "UtilService.UtilService",
 	HandlerType: (*UtilServiceServer)(nil),
@@ -203,6 +328,10 @@ var _UtilService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeadLinkChecker",
 			Handler:    _UtilService_DeadLinkChecker_Handler,
+		},
+		{
+			MethodName: "GetDeepLink",
+			Handler:    _UtilService_GetDeepLink_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

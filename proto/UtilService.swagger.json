@@ -13,13 +13,12 @@
   "paths": {
     "/deadChecker": {
       "post": {
-        "summary": "Schedular CRUD",
-        "operationId": "DeadLinkChecker",
+        "operationId": "GetDeepLink",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/UtilServiceDeadLinkResp"
+              "$ref": "#/definitions/UtilServiceDeepLinkResp"
             }
           }
         },
@@ -29,7 +28,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UtilServiceDeadLinkTarget"
+              "$ref": "#/definitions/UtilServiceDeepLinkReq"
             }
           }
         ],
@@ -53,6 +52,25 @@
       "type": "object",
       "properties": {
         "source": {
+          "type": "string"
+        }
+      }
+    },
+    "UtilServiceDeepLinkReq": {
+      "type": "object",
+      "properties": {
+        "board": {
+          "type": "string"
+        },
+        "packageName": {
+          "type": "string"
+        }
+      }
+    },
+    "UtilServiceDeepLinkResp": {
+      "type": "object",
+      "properties": {
+        "deepLink": {
           "type": "string"
         }
       }

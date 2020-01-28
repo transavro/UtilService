@@ -13,6 +13,23 @@ service UtilService{
                 body: "*"
         };
     }
+
+    rpc GetDeepLink(DeepLinkReq) returns (DeepLinkResp){
+        option (google.api.http) = {
+                post:"/deadChecker"
+                body: "*"
+        };
+    }
+}
+
+message DeepLinkResp{
+    string deepLink = 1;
+}
+
+
+message DeepLinkReq{
+    string board = 1;
+    string packageName = 2;
 }
 
 message DeadLinkTarget{
