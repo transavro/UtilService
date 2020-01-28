@@ -35,16 +35,25 @@ func preTask(){
 }
 
 func(s Server) GetDeepLink(ctx context.Context, req *pb.DeepLinkReq) (*pb.DeepLinkResp, error){
-	findResult := s.DeepLinkCollection.FindOne(ctx, bson.D{{"$and", bson.A{bson.D{{"packagename", req.GetPackageName()}}, bson.D{{"board", req.GetBoard()}}}}})
+	findResult := s.DeepLinkCollection.FindOne(ctx, bson.D{{"$and", bson.A{bson.D{{"packagename", req.GetPackageName()}}, bson.D{{"target.board", bson.A{req.GetBoard()}}}}}})
 	if findResult.Err() != nil {
 		return  nil, status.Error(codes.InvalidArgument, fmt.Sprintf("No deep link found for board %s and packageName %s ", req.GetBoard(), req.GetPackageName()))
 	}
-	var response pb.DeepLinkResp
-	err := findResult.Decode(&response)
+
+	var appDeepLink pb.AppDeepLink
+	err := findResult.Decode(&appDeepLink)
 	if err != nil {
 		return  nil, status.Error(codes.Internal, "Error while decoding to data")
 	}
-	return &response, nil
+
+	for _, target := range appDeepLink.Traget {
+		for _, source := range target.Board {
+			if source == req.GetBoard() {
+				return  &pb.DeepLinkResp{DeepLink:target.DeepLink}, nil
+			}
+		}
+	}
+	return  nil, status.Error(codes.InvalidArgument, fmt.Sprintf("No deep link found for board %s and packageName %s ", req.GetBoard(), req.GetPackageName()))
 }
 
 

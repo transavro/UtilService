@@ -39,3 +39,13 @@ message DeadLinkTarget{
 message DeadLinkResp{
     bool isSuccessful = 1;
 }
+
+message AppDeepLink{
+    string packageName = 1;
+    repeated Target traget = 2;
+}
+
+message Target{
+    repeated string board = 1;
+    string deepLink = 2;
+}

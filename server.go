@@ -167,9 +167,6 @@ func getRedisClient(redisHost string) *redis.Client {
 
 func main() {
 
-	//grpcAddress := fmt.Sprintf("%s:%d", "cloudwalker.services.tv", 7775)
-	//restAddress := fmt.Sprintf("%s:%d", "cloudwalker.services.tv", 7776)
-
 	// fire the gRPC server in a goroutine
 	go func() {
 		err := startGRPCServer(grpc_port)
